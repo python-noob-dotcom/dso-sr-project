@@ -1,17 +1,11 @@
 import os
-import numpy
-import matplotlib.pyplot as plt
-import logging
-
-LOG = logging.getLogger(__name__)
-
-import os
 import numpy as np
 import matplotlib.pyplot as plt
-
 import logging
 
 LOG = logging.getLogger(__name__)
+
+
 
 
 def time_to_freq(tvec):

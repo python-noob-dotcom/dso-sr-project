@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 import numpy as np
-
+import pandas as pd
 from simulator import Signal
 from utils import make_dir
 
@@ -22,7 +22,9 @@ def log_setup():
     hand_stdout.setFormatter(formatter)
     log.addHandler(hand_stdout)
 
-
+class data:
+    def __init__(self, data):
+        self.value = data
 
 def main():
     make_dir('result')
@@ -35,6 +37,8 @@ def main():
 
     data_mf, (rv_map, rv_map_log) = signal.process(signal_ref, received_signal)
     logging.info('Processing Signal Complete')
+
+
 
     """signal.plot_rv_map(rv_map_log)
     logging.info('Plotting RV Map Complete')"""
