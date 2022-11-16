@@ -81,4 +81,51 @@ class Signal(object):
 
         return signal_ref, received_signal
 
+    def plot_rv_map(self, rv_map_log):
+        # rv map parameters
+        self.range_axis = self.c * self.fast_time_axis / 2
+        slow_time_axis = np.array([x * self.pri for x in any_seq(0, self.num_pulses)])
+        dop_axis = time_to_freq(slow_time_axis)
+        self.vel_axis = -1 * self.lam * dop_axis / 2
+
+        rv_map_log_squeezed = np.sum(rv_map_log, 2)
+        rv_map_log_squeezed_trunc, (xmin, xmax, ymin, ymax) = imagesc_input(rv_map_log_squeezed[:, :], self.vel_axis,
+                                                                            self.range_axis / 1e3)
+
+        fig, ax = plt.subplots()
+        ax.imshow(rv_map_log_squeezed_trunc, interpolation='none', extent=(xmin, xmax, ymax, ymin))
+        ax.set_ylabel('range (km)')
+        ax.set_xlabel('velocity (m/s)')
+
+        save_img('rv_map', form='png')
+
+    def process(self, signal_ref, received_signal):
+        # reshape data
+        data_mat = np.zeros((self.num_rng_bins, self.num_pulses, self.num_array), dtype=complex)
+        for x in any_seq(0, self.num_array):
+            data_mat[:, :, x] = received_signal[:, x].reshape((self.num_pulses, self.num_rng_bins)).T
+        signal_ref_mat = np.tile(signal_ref.reshape(-1, 1), (1, self.num_pulses))
+
+        # matched filter
+        logging.info('Match Filtering')
+        nfft = 2 * self.num_rng_bins
+        data_mf = np.zeros((nfft, self.num_pulses, self.num_array), dtype=complex)
+        for x in any_seq(0, self.num_array):
+            data_mf[:, :, x] = ifft(fft(data_mat[:, :, x], nfft, 0) * np.conj(fft(signal_ref_mat, nfft, 0)), axis=0)
+        data_mf = data_mf[:self.num_rng_bins, :, :]
+
+        # doppler processing
+        logging.info('Doppler Processing')
+        rv_map_test = np.zeros((self.num_rng_bins, self.num_pulses, self.num_array), dtype=complex)
+        rv_map_log = np.zeros((self.num_rng_bins, self.num_pulses, self.num_array))
+
+        for x in any_seq(0, self.num_array):
+            rv_map = fftshift(fft(data_mf[:, :, x], axis=1), axes=1)
+            rv_map_test[:, :, x] = rv_map
+            rv_map_log[:, :, x] = 20 * np.log10(np.abs(rv_map))
+
+        return data_mf, (rv_map, rv_map_log)
+
+    
+
 

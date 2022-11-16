@@ -84,6 +84,6 @@ def save_img(name, folder='result', form='png'):
     logging.info('Output image is saved to {}'.format(savepath))
 
 
-def make_dir(folder='result'):
+def make_dir(folder):
     if not os.path.exists(folder):
         os.mkdir(folder)
