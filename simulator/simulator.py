@@ -126,6 +126,6 @@ class Signal(object):
 
         return data_mf, (rv_map, rv_map_log)
 
-    
+
 
 

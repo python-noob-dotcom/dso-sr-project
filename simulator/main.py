@@ -22,9 +22,13 @@ def log_setup():
     hand_stdout.setFormatter(formatter)
     log.addHandler(hand_stdout)
 
-class data:
+class training_data:
     def __init__(self, data):
-        self.value = data
+        self.training_data = data
+
+class test_data:
+    def __init__(self, test_data):
+        self.test_data = test_data
 
 def main():
     make_dir('result')
@@ -37,6 +41,7 @@ def main():
 
     data_mf, (rv_map, rv_map_log) = signal.process(signal_ref, received_signal)
     logging.info('Processing Signal Complete')
+    data(data_mf)
 
 
 
