@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf996c81-3069-40d6-971c-73e166197f01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/processing_code.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/rv_map_if_needed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator/FCN.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/FCN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator/simulator (test data).py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
