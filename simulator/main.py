@@ -41,12 +41,12 @@ def main():
 
     data_mf, (rv_map, rv_map_log) = signal.process(signal_ref, received_signal)
     logging.info('Processing Signal Complete')
-    data(data_mf)
+    test_data(data_mf)
 
 
 
-    """signal.plot_rv_map(rv_map_log)
-    logging.info('Plotting RV Map Complete')"""
+    signal.plot_rv_map(rv_map_log)
+    logging.info('Plotting RV Map Complete')
 
     # i_row, i_col = signal.detect_target(rv_map_log)
     # logging.info('Detecting Targets Complete')
