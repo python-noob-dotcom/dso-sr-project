@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import PIL
 
 
-class car:
+"""class car:
     def __init__(self, coordinates, speed):
         self.coordinates = coordinates
         self.velocity = speed
@@ -13,9 +13,25 @@ class bicycle:
     def __init__(self, coordinates, speed):
         self.coordinates = coordinates
         self.velocity = speed
+class person:
+    def __init__(self, coordinates, speed):
+        self.coordinates = coordinates
+        self.speed = speed
 
+class bus:
+    def __init__(self, coordinates, speed):
+        self.coordinates = coordinates
+        self.velocity = speed
+class truck:
+    def __init__ (self, coordinates, speed):
+        self.coordinates = coordinates
+        self.velocity = speed
+class motorcycle:
+    def __init__(self, coordinates, speed):
+        self.coordinates = coordinates
+        self.velocity = speed
 
-
+"""
 all_classes = ["person", "bicycle", "car", "motorcycle", "bus", "truck" ] ##TODO
 
 batch_size = 100
@@ -74,7 +90,7 @@ def plot_accuracy_and_loss():
     plt.legend(loc = 'lower_right')
 
 def test_model():
-    test_loss, test_accuracy = model.evaluate(tets_images, test_labels, verbose = 2)
+    test_loss, test_accuracy = model.evaluate(test_images, test_labels, verbose = 2)
 
     print("test loss" + test_loss, '\n' , "test accuracy" + test_accuracy)
 
