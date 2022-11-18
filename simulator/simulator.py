@@ -41,10 +41,10 @@ class Signal(object):
         self.tgt_velocity = np.array([])
         self.angle_of_arrival_deg = np.array([])
         for i in range(0,10):
-            self.tgt_snr_db = np.append(self.tgt_snr_db, random.randint(0, 100, 10))
-            self.tgt_range = np.append(self.tgt_range, random.randint(100000, 1000000, 10000))
-            self.tgt_velocity = np.append(self.tgt_velocity, random.randint(100, 300, 20))
-            self.angle_of_arrival_deg = np.append(self.angle_of_arrival_deg, random.randint(10, 100, 5))
+            self.tgt_snr_db = np.append(self.tgt_snr_db, random.randint(0, 100))
+            self.tgt_range = np.append(self.tgt_range, random.randint(100000, 1000000))
+            self.tgt_velocity = np.append(self.tgt_velocity, random.randint(100, 300))
+            self.angle_of_arrival_deg = np.append(self.angle_of_arrival_deg, random.randint(10, 100))
         self.angle_of_arrival_rad = (self.angle_of_arrival_deg / 360) * 2 * np.pi
         self.tgt_num = len(self.tgt_range)  # counting number of targets
 
