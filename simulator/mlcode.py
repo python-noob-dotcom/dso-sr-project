@@ -4,11 +4,6 @@ import matplotlib.pyplot as plt
 import PIL
 
 
-
-
-
-
-
 class car:
     def __init__(self, coordinates, speed):
         self.coordinates = coordinates
@@ -63,8 +58,8 @@ def build_model():
     model.summary()
 
     
-def train_model():
-    model.compile(optimizer = "adam", loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics = ['accuracy'])
+def train_model(learning_rate):
+    model.compile(optimizer = tf.keras.optimizers.RMSprop(lr=my_learning_rate), loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics = ['accuracy'])
     train = model.fit(train_images, train_labels, epochs = 50,
                   validation_data = (test_images, test_labels))
 
