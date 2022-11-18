@@ -5,14 +5,23 @@ import PIL
 
 
 
-## TODO
 
 
 
 
+class car:
+    def __init__(self, coordinates, speed):
+        self.coordinates = coordinates
+        self.velocity = speed
+
+class bicycle:
+    def __init__(self, coordinates, speed):
+        self.coordinates = coordinates
+        self.velocity = speed
 
 
-"""all_classes = ["person", "bicycle", "car", "motorcycle", "bus", "truck" ] ##TODO
+
+all_classes = ["person", "bicycle", "car", "motorcycle", "bus", "truck" ] ##TODO
 
 batch_size = 100
 img_height = 256
@@ -39,13 +48,14 @@ test_ds = tf.keras.utils.image_dataset_from_directory(
     image_size = (image_height, image_width),
     batch_size = batch_size
 )
-"""
+
 def build_model():
     model = tf.keras.models.Sequential([tf.keras.layers.Conv2D(256, (10, 10), activation = 'relu', input_shape = (256, 256, 64)),
         tf.keras.layers.MaxPooling2D(2, 2),
         tf.keras.layers.Conv2D(512, (10, 10), activation = 'relu'),
         tf.keras.layers.MaxPooling2D(2, 2),
         tf.keras.layers.Conv2D(1024, (10, 10), activation = 'relu'),
+        tf.keras.layers.Dropout(0.3),
         tf.keras.layers.MaxPooling2D(2, 2),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(256, activation = 'relu'),
