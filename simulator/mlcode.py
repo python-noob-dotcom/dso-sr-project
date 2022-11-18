@@ -50,7 +50,7 @@ model.add([
     tf.keras.Maxpooling2D(2, 2),
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(256, activation = 'relu'),
-    tf.keras.layers.Dense(6, activation - 'relu')
+    tf.keras.layers.Dense(6, activation = 'relu')
     
 ])
 
