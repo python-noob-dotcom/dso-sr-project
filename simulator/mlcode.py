@@ -33,7 +33,7 @@ data_dir = pathlib.Path(data_dir)
 
 train_ds = tf.keras.utils.image_dataset_from_directory(
     data_dir,
-    validation_split = 0.3,
+    validation_split = 0.1,
     subset = 'training',
     seed = 123,
     image_size = (image_height, image_width),
@@ -42,7 +42,7 @@ train_ds = tf.keras.utils.image_dataset_from_directory(
 
 test_ds = tf.keras.utils.image_dataset_from_directory(
     data_dir,
-    validation_split = 0.3,
+    validation_split = 0.1,
     subset = 'validation',
     seed = 123,
     image_size = (image_height, image_width),
