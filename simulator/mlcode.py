@@ -17,8 +17,9 @@ import PIL
 batch_size = 100
 img_height = 256
 img_width = 256
-dataset_url = 'https://drive.google.com/drive/folders/14pPvU2FRdLpc8ZS904oE20ZFYfFjJvaM'
-data_dir = tf.keras.utils.get_file('vis_radar_only', origin = dataset_url, untar=True)
+import pathlib 
+dataset_url = "/home/jovyan/dso-sr-project/simulator/data"
+data_dir = tf.keras.utils.get_file('vis', origin=dataset_url, untar=True)
 data_dir = pathlib.Path(data_dir)
 
 train_ds = tf.keras.utils.image_dataset_from_directory(
