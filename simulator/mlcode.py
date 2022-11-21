@@ -2,7 +2,8 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 import PIL
-
+import cv2
+import data
 
 """class car:
     def __init__(self, coordinates, speed):
@@ -32,6 +33,27 @@ class motorcycle:
         self.velocity = speed
 
 """
+highest_pixel_values = []
+r = 0
+for i in range(0, len(list(data))):
+    r =  i
+    file = 'vis_' + str(r)
+    img1 = PIL.Image.open('/home/jovyan/dso-sr-project/simulator/data/' + file)
+    img1.convert('L')
+    img = cv2.imread('/home/jovyan/dso-sr-project/simulator/data/' + file, 0)
+    for l in range(img.shape[0]):
+        for j in range(img.shape[1]):
+
+
+
+
+
+
+
+
+
+
+
 all_classes = ["person", "bicycle", "car", "motorcycle", "bus", "truck" ] ##TODO
 
 batch_size = 100
