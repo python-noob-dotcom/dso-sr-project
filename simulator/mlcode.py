@@ -33,16 +33,22 @@ class motorcycle:
         self.velocity = speed
 
 """
-highest_pixel_values = []
+pixel_values = []
 r = 0
 for i in range(0, len(list(data))):
     r =  i
     file = 'vis_' + str(r)
     img1 = PIL.Image.open('/home/jovyan/dso-sr-project/simulator/data/' + file)
+    imagebpx = img1.getbbox()
+    crop = img1.crop(imagebpx)
+    crop.save_img("/home/jovyan/dso-sr-project/simulator/cropped_images?/" + file)
+    
     img1.convert('L')
-    img = cv2.imread('/home/jovyan/dso-sr-project/simulator/data/' + file, 0)
+    img = cv2.imread('/home/jovyan/dso-sr-project/simulator/cropped_images?/' + file, 0)
     for l in range(img.shape[0]):
         for j in range(img.shape[1]):
+            pixel_values.append(img[l][j])
+    
 
 
 
