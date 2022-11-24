@@ -1,22 +1,38 @@
 import os
 import cv2
-import glob
-crop_directory = r"C:\Users\eugen\Documents\GitHub\dso-sr-project\simulator\cropped_images"
-image_directory = r"C:\Users\eugen\Documents\GitHub\dso-sr-project\simulator\real_data"
+from os import listdir
+from os.path import isfile, join
+
+crop_directory = "/home/jovyan/dso-sr-project-1/simulator/cropped_images"
+image_directory = "/home/jovyan/dso-sr-project-1/simulator/real_data"
 y = 400
 x = 0
 h = 800
 w = 800
+x1 = 0
 list1 = []
 os.chdir(crop_directory)
 u = 0
-for i in glob.glob(image_directory):
-    u+= 1
-    list1.append(i)
-    image = cv2.imread(i)
-    crop = image[x:w, y:h]
-    cv2_imshow(crop)
-    cv2.imwrite("vis_radar_crop_" + str(u) + ".png", crop)
+onlyfiles = [f for f in listdir(image_directory) if isfile(join(image_directory, f))]
+onlyfiles.sort()
+box = (x, w, y, h)
+x = 0
+for filename in range(0, len(onlyfiles)): 
+    
+    image = cv2.imread("/home/jovyan/dso-sr-project-1/simulator/real_data/" + onlyfiles[filename])
+
+    crop_image = image[x:w, y:h]
+    
+    cv2.imwrite("radar_crop_"+str(x1)+".png", crop_image)
+    x += 1
+
+        
+
+    
+    
+
+
+
 
 
 
