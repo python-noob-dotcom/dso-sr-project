@@ -5,7 +5,7 @@ from os.path import isfile, join
 
 crop_directory = "/home/jovyan/dso-sr-project-1/simulator/cropped_images"
 image_directory = "/home/jovyan/dso-sr-project-1/simulator/real_data"
-y = 400
+y = 0
 x = 0
 h = 800
 w = 800
