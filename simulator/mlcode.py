@@ -13,7 +13,8 @@ import cropped_images
     - Create labels for the images, by reading off the number of targets
     - Create seperate labels for the images, based on their classes in the image
     - Seperate the images to be used in training or validation
-2. Write a new layer of code for another neural network to identify the number of targets
+2a. Write a new layer of code for another neural network to identify the number of targets
+2b. Write a code for the convolutional nn for classification of targets --ALMOST DONE
 3. Handle the neural network / data such that the first layer of the neural network system will learn how to identify
 the number of targets
 4. Test and evaluate the model
