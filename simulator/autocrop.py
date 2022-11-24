@@ -17,15 +17,15 @@ onlyfiles = [f for f in listdir(image_directory) if isfile(join(image_directory,
 onlyfiles.sort()
 box = (x, w, y, h)
 x = 0
-for filename in range(0, len(onlyfiles)): 
+for i in range(0, len(onlyfiles)): 
     
-    image = cv2.imread("/home/jovyan/dso-sr-project-1/simulator/real_data/" + onlyfiles[filename])
+    image = cv2.imread("/home/jovyan/dso-sr-project-1/simulator/real_data/" + onlyfiles[i])
 
     crop_image = image[x:w, y:h]
-    
+    cv2.imshow(crop_image)
     cv2.imwrite("radar_crop_"+str(x1)+".png", crop_image)
     x += 1
-
+    cv2.waitKey(0)
         
 
     

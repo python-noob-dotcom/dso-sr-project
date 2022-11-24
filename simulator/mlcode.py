@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import PIL
 import cv2
-import data
+import cropped_images
 
 """class car:
     def __init__(self, coordinates, speed):
