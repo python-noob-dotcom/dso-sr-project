@@ -14,11 +14,12 @@ filenames = [f for f in listdir(number_directory) if os.path.isfile(os.path.join
 filenames.sort()
 
 os.chdir(plotted_image_directory)
-
+print(filenames)
 
 for i in range(0, 10):
     filE = "/home/jovyan/dso-sr-project-1/simulator/number/" + filenames[i]
     file = np.load(filE)
+    print(file)
     plt.imshow(10*np.log10(np.abs(np.sum(file, 1))), cmap = "Blues")
     plt.savefig(filenames[i] + "_plotted.png")
 
