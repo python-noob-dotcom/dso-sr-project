@@ -57,15 +57,6 @@ r = 0
 
 
 
-
-
-
-
-
-
-
-
-
 all_classes = ["person", "bicycle", "car", "motorcycle", "bus", "truck" ] ##TODO
 
 batch_size = len(onlyfiles = [f for f in listdir(image_directory) if isfile(join(image_directory, f))])
