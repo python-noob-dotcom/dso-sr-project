@@ -19,7 +19,7 @@ os.chdir(plotted_image_directory)
 for i in range(0, 10):
     filE = "/home/jovyan/dso-sr-project-1/simulator/number/" + filenames[i]
     file = np.load(filE)
-    plt.imshow(10*np.log10(np.abs(np.sum(file, 1))))
+    plt.imshow(10*np.log10(np.abs(np.sum(file, 1))), cmap = "Blues")
     plt.savefig(filenames[i] + "_plotted.png")
 
     
