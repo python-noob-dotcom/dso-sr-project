@@ -55,57 +55,36 @@ class motorcycle:
 pixel_values = []
 r = 0
 
+groundtruth_directory = "/home/jovyan/dso-sr-project-1/simulator/gt"
+groundtruth_list = [f for f in listdir(groundtruth_directory) if isfile(join(groundtruth_directory, f))]
+def groundtruth():
+    groundtruths = []
+    classes = []
+    for i in range(0, len(groundtruth_list)):
+        groundtruth_file = groundtruth_directory + "/" + groundtruth_list[i]
+        fullgt = pd.read_pickle(groundtruth_file)
+        number_of_targets = len(fullgt["classes"])
+        groundtruths.append(number_of_targets)
+        classes.append(fullgt["classes"])
 
 
 all_classes = ["person", "bicycle", "car", "motorcycle", "bus", "truck" ] ##TODO
 
 batch_size = len(onlyfiles = [f for f in listdir(image_directory) if isfile(join(image_directory, f))])
-img_height = 800
-img_width = 400
-import pathlib 
-#handling the input images such that 
-for i in range(0, batch_size):
-    r =  i
-    file = 'radar_crop_' + str(r)
-    img1.convert('L')
-    img = cv2.imread('/home/jovyan/dso-sr-project/simulator/cropped_images/' + file, 0)
-    for l in range(img.shape[0]):
-        for j in range(img.shape[1]):
-            pixel_values.append(img[l][j])
-    
 
-#Labelling the data to use to train the machine    
-train_ds = tf.keras.utils.image_dataset_from_directory(
-    data_dir,
-    validation_split = 0.1,
-    subset = 'training',
-    seed = 123,
-    image_size = (image_height, image_width),
-    batch_size=batch_size
-)
-
-#Labelling the data to be used to validate the machine's accuracy
-test_ds = tf.keras.utils.image_dataset_from_directory(
-    data_dir,
-    validation_split = 0.1,
-    subset = 'validation',
-    seed = 123,
-    image_size = (image_height, image_width),
-    batch_size = batch_size
-)
 
 #building the convolutional neural network based on off the dimensions of the input images (400, 800)
 def build_model():
-    model = tf.keras.models.Sequential([tf.keras.layers.Conv2D(256, (10, 10), activation = 'relu', input_shape = (256, 256, 64)),
+    model = tf.keras.models.Sequential([tf.keras.layers.Conv2D(640, (10, 10), activation = 'relu', input_shape = (640, 480, 32)),
         tf.keras.layers.MaxPooling2D(2, 2),
-        tf.keras.layers.Conv2D(512, (10, 10), activation = 'relu'),
+        tf.keras.layers.Conv2D(640, (10, 10), activation = 'relu'),
         tf.keras.layers.MaxPooling2D(2, 2),
-        tf.keras.layers.Conv2D(1024, (10, 10), activation = 'relu'),
+        tf.keras.layers.Conv2D(960, (10, 10), activation = 'relu'),
         tf.keras.layers.Dropout(0.3),
         tf.keras.layers.MaxPooling2D(2, 2),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(256, activation = 'relu'),
-        tf.keras.layers.Dense(6, activation = 'relu')])
+        tf.keras.layers.Dense(7, activation = 'relu')])
     model.summary()
 
 #defining the function to train the neural network based on the different params that we set for learning rate
@@ -132,3 +111,6 @@ def test_model():
     print("test loss" + test_loss, '\n' , "test accuracy" + test_accuracy)
 
 
+
+groundtruth()
+build_model()
