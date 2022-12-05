@@ -8,7 +8,7 @@ image_directory = "/home/jovyan/dso-sr-project-1/simulator/real_data"
 y = 400
 x = 0
 h = 800
-w = 800
+w = 640
 x1 = 0
 list1 = []
 os.chdir(crop_directory)
@@ -16,9 +16,10 @@ u = 0
 onlyfiles = [f for f in listdir(image_directory) if isfile(join(image_directory, f))]
 onlyfiles.sort()
 box = (x, w, y, h)
-print(onlyfiles)
+
 x = 0
-"""for i in range(0, len(onlyfiles))
+
+for i in range(0, len(onlyfiles)):
     
     image = cv2.imread("/home/jovyan/dso-sr-project-1/simulator/real_data/" + onlyfiles[i])
 
@@ -26,16 +27,3 @@ x = 0
     
     cv2.imwrite("radar_crop_"+str(x1)+".png", crop_image)
     x1 += 1
-    
-    cv2.waitKey(0)
-        
-print(list1)"""
-    
-    
-
-
-
-
-
-
-
